@@ -1,0 +1,30 @@
+---
+- name: redhat_family | Install required system packages
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - "yum-utils"
+    - "device-mapper-persistent-data"
+    - "lvm2"
+    - "python-pip"
+
+# Only for RHEL. Extras repo contains container-selinux package
+- name: redhat_family | Add CentOS Extras repository
+  template:
+    src: centos-extras.repo
+    dest: /etc/yum.repos.d/
+  when: ansible_distribution == 'RedHat'
+
+- name: redhat_family | Add Docker repository
+  template:
+    src: docker-ce.repo
+    dest: /etc/yum.repos.d/
+
+- name: redhat_family | Install Docker
+  yum:
+    name: "docker-ce"
+    state: latest
+    update_cache: true
+  notify:
+    - start docker

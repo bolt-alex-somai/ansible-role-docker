@@ -1,0 +1,6 @@
+[centos-extras]
+baseurl=http://mirror.yandex.ru/centos/7/extras/$basearch/
+enabled=1
+gpgcheck=1
+gpgkey=https://www.centos.org/keys/RPM-GPG-KEY-CentOS-7
+name=CentOS Extras Repository

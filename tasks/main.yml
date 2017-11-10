@@ -1,0 +1,8 @@
+---
+- name: Docker Distro-specific setup tasks
+  include_tasks: "{{ ansible_os_family }}.yml"
+
+- name: Install Docker Compose
+  pip:
+    name: docker-compose
+    state: latest
