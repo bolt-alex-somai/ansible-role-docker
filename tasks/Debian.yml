@@ -4,12 +4,12 @@
     url: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
     state: present
     validate_certs: False
-  when: ansible_distribution_release != trusty
+  when: ansible_distribution_release != 'trusty'
 
 - name: debian_family | Add gpg key of Docker repository
   command:
     bash -c "curl -s https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg | apt-key add -"
-  when: ansible_distribution_release == trusty
+  when: ansible_distribution_release == 'trusty'
 
 - name: debian_family | Add Docker repository
   apt_repository:
