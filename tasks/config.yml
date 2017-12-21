@@ -10,9 +10,15 @@
     dest: /etc/systemd/system/docker.service.d/
   notify: systemd daemon-reload
 
+- name: Docker | Deploy Config | Set the Docker configuration
+  set_fact:
+    dockerd_params_json: "{{ dockerd_params_json|combine({ item.key: item.value }) }}"
+  when: item.value != ""
+  with_dict: "{{ dockerd_params }}"
+
 - name: Create config /etc/docker/daemon.json
   copy:
-    content: "{{ dockerd_params | to_nice_json }}\n"
+    content: "{{ dockerd_params_json | to_nice_json }}\n"
     dest: /etc/docker/daemon.json
-  when: dockerd_params != {}
+  when: dockerd_params_json != {}
   notify: restart docker
