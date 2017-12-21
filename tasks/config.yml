@@ -10,7 +10,7 @@
     dest: /etc/systemd/system/docker.service.d/
   notify: systemd daemon-reload
 
-- name: Docker | Deploy Config | Set the Docker configuration
+- name: Remove empty key:value pairs
   set_fact:
     dockerd_params_json: "{{ dockerd_params_json|combine({ item.key: item.value }) }}"
   when: item.value != ""
