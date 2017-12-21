@@ -13,3 +13,5 @@ dockerd_params:
     tlscert: "{{ dockerd_tlscert | default(None) }}"
     tlskey: "{{ dockerd_tlskey | default(None) }}"
     tlsverify: "{{ dockerd_tlsverify | default(None) }}"
+
+dockerd_params_json: {}
