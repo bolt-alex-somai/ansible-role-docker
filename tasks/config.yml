@@ -8,7 +8,7 @@
   copy:
     src: override.conf
     dest: /etc/systemd/system/docker.service.d/
-  notify: systemd deamon-reload
+  notify: systemd daemon-reload
 
 - name: Create config /etc/docker/daemon.json
   copy:
