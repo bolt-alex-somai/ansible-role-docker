@@ -2,6 +2,9 @@
 - name: Docker Distro-specific setup tasks
   include_tasks: "{{ ansible_os_family }}.yml"
 
+- name: Docker config
+  include_tasks: config.yml
+
 - name: Install Docker Compose
   pip:
     name: docker-compose

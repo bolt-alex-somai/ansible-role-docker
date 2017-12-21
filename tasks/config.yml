@@ -1,0 +1,18 @@
+---
+- name: Create docker.service.d
+  file:
+    path: /etc/systemd/system/docker.service.d
+    state: directory
+
+- name: Override systemd config
+  copy:
+    src: override.conf
+    dest: /etc/systemd/system/docker.service.d/
+  notify: systemd deamon-reload
+
+- name: Create config /etc/docker/daemon.json
+  copy:
+    content: "{{ dockerd_params | to_nice_json }}\n"
+    dest: /etc/docker/daemon.json
+  when: dockerd_params != {}
+  notify: restart docker

@@ -1,0 +1,15 @@
+---
+dockerd_params:
+    debug: "{{ dockerd_debug | default(None) }}"
+    dns: "{{ dockerd_dns | default(None) }}"
+    hosts: "{{ dockerd_hosts | default(None) }}"
+    insecure-registries: "{{ dockerd_insecure_registries | default(None) }}"
+    live-restore: "{{ dockerd_live_restore | default(None) }}"
+    log-driver: "{{ dockerd_log_driver | default(None) }}"
+    log-level: "{{ dockerd_log_level | default(None) }}"
+    log-opts: "{{ dockerd_log_opts | default(None) }}"
+    tls: "{{ dockerd_tls | default(None) }}"
+    tlscacert: "{{ dockerd_tlscacert | default(None) }}"
+    tlscert: "{{ dockerd_tlscert | default(None) }}"
+    tlskey: "{{ dockerd_tlskey | default(None) }}"
+    tlsverify: "{{ dockerd_tlsverify | default(None) }}"
