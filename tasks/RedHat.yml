@@ -28,3 +28,8 @@
     update_cache: true
   notify:
     - start docker
+
+- name: redhat_family | Install Docker Compose
+  pip:
+    name: docker-compose
+    state: latest

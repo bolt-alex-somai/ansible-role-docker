@@ -24,8 +24,13 @@
 
 - name: debian_family | Install Docker
   apt:
-    name: docker-ce
+    name: "{{ packages }}"
     state: latest
     update_cache: yes
+  vars:
+    packages:
+      - docker-ce
+      - python-docker
+      - docker-compose
   notify:
     - start docker

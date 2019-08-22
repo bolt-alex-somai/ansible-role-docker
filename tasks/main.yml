@@ -4,8 +4,3 @@
 
 - name: Docker config
   include_tasks: config.yml
-
-- name: Install Docker Compose
-  pip:
-    name: docker-compose
-    state: latest
