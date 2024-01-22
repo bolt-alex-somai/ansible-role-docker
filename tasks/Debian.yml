@@ -13,20 +13,26 @@
 
 - name: debian_family | Add Docker repository
   apt_repository:
-    repo: deb [arch={{ item }}] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable
+    repo: deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable
     state: present
-    with_items:
-      - amd64
-      - arm64
 
-- name: debian_family | Install Docker
+- name: debian_family | Install Docker Compose
   apt:
     name: "{{ packages }}"
     state: latest
     update_cache: yes
   vars:
     packages:
-      - docker-ce
       - docker-compose
+
+- name: debian_family | Install Docker
+  apt:
+    name: "{{ packages }}"
+    state: present
+    update_cache: yes
+  vars:
+    packages:
+      - docker-ce=5:24.0.7-1~ubuntu.20.04~focal
+      - docker-ce-cli=5:24.0.7-1~ubuntu.20.04~focal
   notify:
     - start docker
