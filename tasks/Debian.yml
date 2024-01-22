@@ -19,6 +19,15 @@
       - amd64
       - arm64
 
+- name: debian_family | Install Docker Compose
+  apt:
+    name: "{{ packages }}"
+    state: latest
+    update_cache: yes
+  vars:
+    packages:
+      - docker-compose
+
 - name: debian_family | Install Docker
   apt:
     name: "{{ packages }}"
@@ -27,6 +36,5 @@
   vars:
     packages:
       - docker-ce=5:24.0.7-1~ubuntu.20.04~focal
-      - docker-compose
   notify:
     - start docker
