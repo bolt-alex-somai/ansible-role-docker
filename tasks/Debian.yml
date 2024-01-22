@@ -22,11 +22,11 @@
 - name: debian_family | Install Docker
   apt:
     name: "{{ packages }}"
-    state: latest
+    state: present
     update_cache: yes
   vars:
     packages:
-      - docker-ce
+      - docker-ce=5:24.0.7-1~ubuntu.20.04~focal
       - docker-compose
   notify:
     - start docker
