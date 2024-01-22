@@ -33,5 +33,6 @@
   vars:
     packages:
       - docker-ce=5:24.0.7-1~ubuntu.20.04~focal
+      - docker-ce-cli=5:24.0.7-1~ubuntu.20.04~focal
   notify:
     - start docker
