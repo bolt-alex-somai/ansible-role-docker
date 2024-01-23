@@ -1,6 +1,7 @@
----
 dockerd_params:
+    data-root: "{{ dockerd_data_root | default(None) }}"
     debug: "{{ dockerd_debug | default(None) }}"
+    default-address-pools: "{{ dockerd_default_address_pools | default(None) }}"
     dns: "{{ dockerd_dns | default(None) }}"
     hosts: "{{ dockerd_hosts | default(None) }}"
     insecure-registries: "{{ dockerd_insecure_registries | default(None) }}"
@@ -8,6 +9,7 @@ dockerd_params:
     log-driver: "{{ dockerd_log_driver | default(None) }}"
     log-level: "{{ dockerd_log_level | default(None) }}"
     log-opts: "{{ dockerd_log_opts | default(None) }}"
+    registry-mirrors: "{{ dockerd_registry_mirrors | default(None) }}"
     tls: "{{ dockerd_tls | default(None) }}"
     tlscacert: "{{ dockerd_tlscacert | default(None) }}"
     tlscert: "{{ dockerd_tlscert | default(None) }}"

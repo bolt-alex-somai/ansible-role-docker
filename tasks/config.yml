@@ -1,15 +1,4 @@
 ---
-- name: Create docker.service.d
-  file:
-    path: /etc/systemd/system/docker.service.d
-    state: directory
-
-- name: Override systemd config
-  copy:
-    src: override.conf
-    dest: /etc/systemd/system/docker.service.d/
-  notify: systemd daemon-reload
-
 - name: Remove empty key:value pairs
   set_fact:
     dockerd_params_json: "{{ dockerd_params_json|combine({ item.key: item.value }) }}"
