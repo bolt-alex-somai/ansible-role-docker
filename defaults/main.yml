@@ -1,3 +1,4 @@
+---
 dockerd_params:
     data-root: "{{ dockerd_data_root | default(None) }}"
     debug: "{{ dockerd_debug | default(None) }}"
