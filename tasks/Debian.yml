@@ -13,7 +13,7 @@
 
 - name: debian_family | Add Docker repository
   apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable
+    repo: deb https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable
     state: present
 
 - name: debian_family | Install Docker Compose
